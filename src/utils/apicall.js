@@ -33,10 +33,22 @@ export const PostData = async(endPoint,options) => {
 
 export const PutData = async(endPoint,options) => {
 
-    
+  try {
+    setHeader();
+    const response = await api.put(endPoint, options);
+    return response
+  } catch (err) {
+      throw err;
+  }  
 }
 
-export const DeleteData = async(endPoint,options) => {
+export const DeleteData = async(endPoint) => {
 
-
+  try {
+    setHeader();
+    const response = await api.delete(endPoint);
+    return response
+  } catch (err) {
+      throw err;
+  }  
 }

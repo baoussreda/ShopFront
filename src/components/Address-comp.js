@@ -1,36 +1,38 @@
 import React from 'react';
-import { Col, Card, Button } from "react-bootstrap";
+ 
 
+export const AddressComponent = ({ address }) => {
 
-export const AddressComponent = (address) => {
-
-    const addressCard = ({}) => {
-
-        return <Col className="col-3">
-              <Card style={{ width: '15rem', height: '14rem' }}>
-                <Card.Body>
-                  <Card.Title>Address</Card.Title>
-                  <Card.Text>
-                   Address Details
-                  </Card.Text>
-                  <Button variant="warning">edit</Button>
-                  <Button variant="warning">delete</Button>
-                </Card.Body>
-              </Card>
-          </Col>      
+    const addressCard = ({street,postalCode,city,country}) => {
+        return <div className="col-sm col-lg-4 col-mid-3 bg-white p-2 rounded">
+                  <div>
+                    <span class="badge badge-warning">Default Address</span>
+                    <p>{street}</p>
+                    <span className="">{postalCode},{city},{country}</span>
+                  </div>
+                  <div className="float-right">
+                    <button type="button" class="btn btn-info btn-sm mr-2">
+                      <i className="fas fa-trash"></i>
+                    </button>
+                    <button type="button" class="btn btn-info btn-sm mr-2">
+                      <i className="fas fa-edit"></i>
+                    </button>
+                  </div>
+          </div>      
       }
   
       const listOfAddress = () => {
-  
-       return address.map((item) => {
-            return addressCard(item)
-        });
-        
+          if(Array.isArray(address)){
+            return address.map((item) => {
+                return addressCard(item)
+            });
+          }else{
+            return <p> Address Not available!</p>
+          }
       }
 
-
-    return  <div className="d-flex flex-row flex-nowrap overflow-auto">
-        {Array.isArray(address) && listOfAddress()}
+    return <div className="d-flex flex-row flex-nowrap overflow-auto">
+            {listOfAddress()}
     </div>
 
 

@@ -58,16 +58,4 @@ export const onViewProfile = () => async(dispatch) => {
     console.log(err)
   }
 };
-
-
-
-/*
-  export const Dismiss = async () => {
-    return async (dispatch: Dispatch<Actions>) => {
-      dispatch({
-        type: UserActionType.DISMISS,
-        payload: '',
-      });
-    }
-  };
-*/
+ 
